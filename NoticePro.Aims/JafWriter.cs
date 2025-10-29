@@ -48,11 +48,11 @@ public class JafWriter : IDisposable, IAsyncDisposable
 
         await _writer.WriteAsync(HeaderWidths,
             "H", 
-            jobId, 
-            sla?.ToString(DateFormat), 
-            created?.ToString(DateFormat), 
-            jobName, 
-            imosJobName);
+            header.JobId, 
+            header.Sla?.ToString(DateFormat), 
+            header.Created?.ToString(DateFormat), 
+            header.JobName, 
+            header.ImosJobName);
 
         _headerWritten = true;
     }
