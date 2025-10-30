@@ -1,34 +1,27 @@
 ﻿using WillSoss.FixedWidth;
 
 namespace NoticePro.Aims;
+
+/// <summary>
+/// Writes Quadient AIMS JAF files, which are fixed-width files with
+/// a header record followed by multiple body records.
+/// </summary>
 public class JafWriter : IDisposable, IAsyncDisposable
 {
     private readonly FixedWidthWriter _writer;
     private bool _headerWritten = false;
     private bool _bodyWritten = false;
 
-    private const string DateFormat = "YYYY-MM-DD hh:mm:ss";
-
-    private static readonly int[] HeaderWidths = 
-        [1, 10, 19, 19, 32, 20];
-
-    private static readonly int[] BodyWidths =
-        [1, 10, 10, 32,  3,  1,  1,  1,  1,  1,
-         1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
-         1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
-         1,  1,  1, 50, 50, 50, 50, 50, 50, 50, 
-        50, 50, 50,  1,414, 25, 25, 25, 50, 50, 
-        50, 50, 50,200,200,200,200,200,200,200,
-        200,200,200]; 
+    private const string DateFormat = "yyyy-MM-dd HH:mm:ss";
 
     public JafWriter(string filePath)
         : this(File.Open(filePath, FileMode.Create)) { }
 
     public JafWriter(Stream stream)
     {
-        _writer = new FixedWidthWriter(stream, BodyWidths, new FixedWidthWriterOptions
+        _writer = new FixedWidthWriter(stream, JafBodyRecord.FieldWidths, new FixedWidthWriterOptions
         {
-            Alignment = ValueAlignment.End
+            Alignment = ValueAlignment.Right
         });
     }
 
@@ -38,7 +31,12 @@ public class JafWriter : IDisposable, IAsyncDisposable
     private string YesNo(bool? value) =>
         value.HasValue && value.Value ? "1" : "0";
 
-    public async Task WriteHeaderRecord(JafHeaderRecord header)
+    /// <summary>
+    /// Writes a JAF header to the file.
+    /// </summary>
+    /// <param name="header">The header values to write.</param>
+    /// <exception cref="InvalidOperationException">Thrown when a header or body record has already been written.</exception>
+    public async Task WriteHeader(JafHeaderRecord header)
     {
         if (_headerWritten)
             throw new InvalidOperationException("The header can only be written once, at the beginning of the file.");
@@ -46,7 +44,7 @@ public class JafWriter : IDisposable, IAsyncDisposable
         if (_bodyWritten)
             throw new InvalidOperationException("The header must be written before the body.");
 
-        await _writer.WriteAsync(HeaderWidths,
+        await _writer.WriteAsync(JafHeaderRecord.FieldWidths,
             "H", 
             header.JobId, 
             header.Sla?.ToString(DateFormat), 
@@ -57,7 +55,11 @@ public class JafWriter : IDisposable, IAsyncDisposable
         _headerWritten = true;
     }
 
-    public async Task WriteBodyRecord(JafBodyRecord body)
+    /// <summary>
+    /// Writes a JAF body record to the file.
+    /// </summary>
+    /// <param name="body">The body values to write.</param>
+    public async Task WriteBody(JafBodyRecord body)
     {
         _bodyWritten = true;
 

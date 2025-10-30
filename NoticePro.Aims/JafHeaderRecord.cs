@@ -1,6 +1,8 @@
 ﻿namespace NoticePro.Aims;
 public record class JafHeaderRecord
 {
+    public static readonly int[] FieldWidths = [1, 10, 19, 19, 32, 20];
+
     public JafHeaderRecord(string jobId)
     {
         if (string.IsNullOrWhiteSpace(jobId))

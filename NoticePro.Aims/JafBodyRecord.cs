@@ -1,6 +1,21 @@
 ﻿namespace NoticePro.Aims;
 public record JafBodyRecord
 {
+    // In the 2020 JAF documentation, the filler
+    // is 414 chars, but this places the next field
+    // at position 1000, not 1001 as defined. The
+    // filler is adjusted to 415 chars to correctly
+    // place the remaining fields in their defined 
+    // positions.
+    public static readonly int[] FieldWidths =
+        [1, 10, 10, 32,  3,  1,  1,  1,  1,  1,
+         1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
+         1,  1,  1,  1,  1,  1,  1,  1,  1,  1,
+         1,  1,  1, 50, 50, 50, 50, 50, 50, 50,
+        50, 50, 50,  1,415, 25, 25, 25, 50, 50,
+        50, 50, 50,200,200,200,200,200,200,200,
+        200,200,200];
+
     public JafBodyRecord(string jobId, string mailPieceId)
     {
         if (string.IsNullOrWhiteSpace(jobId)) 
@@ -12,6 +27,7 @@ public record JafBodyRecord
         JobId = jobId;
         MailPieceId = mailPieceId;
     }
+
     public string JobId { get; set; } = string.Empty;
     public string MailPieceId { get; set; } = string.Empty;
     public string CustomerId { get; set; } = string.Empty;
