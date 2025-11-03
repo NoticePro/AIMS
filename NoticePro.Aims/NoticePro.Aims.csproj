@@ -5,19 +5,19 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   
-	    <Authors>Chad Lee;William Sossamon</Authors>
-    <Company>Runly LLC</Company>
+	<Authors>William Sossamon</Authors>
+    <Company>NoticePro LLC</Company>
 
-    <Description>Connect to the Runly API using strongly-typed classes.</Description>
-    <PackageTags>rest;api;client</PackageTags>
+    <Description></Description>
+    <PackageTags>mail;quadient;aims</PackageTags>
 
-    <Copyright>Copyright © Runly LLC 2020</Copyright>
+    <Copyright>Copyright © NoticePro LLC 2025</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
-    <PackageProjectUrl>https://www.runly.io/</PackageProjectUrl>
-    <PackageReleaseNotes>https://github.com/runlyio/core-dotnet/releases</PackageReleaseNotes>
+    <PackageProjectUrl>https://www.noticepro.com/</PackageProjectUrl>
+    <PackageReleaseNotes></PackageReleaseNotes>
 
-    <RepositoryUrl>https://github.com/runlyio/core-dotnet.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/noticepro/aims</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
 
     <PackageIcon>logo.png</PackageIcon>	 
