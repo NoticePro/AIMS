@@ -24,17 +24,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="icon.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="icon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="willsoss.fixedwidth" Version="1.0.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="JafBodyRecord.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
+	<ItemGroup>
+		<None Include="icon.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
 
 </Project>
