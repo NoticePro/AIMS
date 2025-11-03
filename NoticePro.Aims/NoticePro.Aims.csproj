@@ -4,7 +4,50 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+  
+	    <Authors>Chad Lee;William Sossamon</Authors>
+    <Company>Runly LLC</Company>
+
+    <Description>Connect to the Runly API using strongly-typed classes.</Description>
+    <PackageTags>rest;api;client</PackageTags>
+
+    <Copyright>Copyright © Runly LLC 2020</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
+    <PackageProjectUrl>https://www.runly.io/</PackageProjectUrl>
+    <PackageReleaseNotes>https://github.com/runlyio/core-dotnet/releases</PackageReleaseNotes>
+
+    <RepositoryUrl>https://github.com/runlyio/core-dotnet.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+
+    <PackageIcon>logo.png</PackageIcon>
+	  <Authors>Chad Lee;William Sossamon</Authors>
+	  <Company>Runly LLC</Company>
+
+	  <Description>Connect to the Runly API using strongly-typed classes.</Description>
+	  <PackageTags>rest;api;client</PackageTags>
+
+	  <Copyright>Copyright © Runly LLC 2020</Copyright>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
+	  <PackageProjectUrl>https://www.runly.io/</PackageProjectUrl>
+	  <PackageReleaseNotes>https://github.com/runlyio/core-dotnet/releases</PackageReleaseNotes>
+
+	  <RepositoryUrl>https://github.com/runlyio/core-dotnet.git</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+
+	  NoticeProCreates files used in the Quadient AIMsMS software to 's (Automated Inserter Management System)mail;inserter;aimquadient;aimsNoticePro2025noticepro.comhttps://github.com/NoticePro/AIMSicon
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="willsoss.fixedwidth" Version="1.0.0" />
