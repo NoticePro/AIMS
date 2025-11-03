@@ -20,7 +20,7 @@
     <RepositoryUrl>https://github.com/noticepro/aims</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
 
-    <PackageIcon>logo.png</PackageIcon>	 
+    <PackageIcon>icon.png</PackageIcon>	 
   </PropertyGroup>
 
   <ItemGroup>
